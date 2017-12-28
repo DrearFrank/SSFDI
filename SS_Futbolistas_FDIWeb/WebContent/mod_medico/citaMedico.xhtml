@@ -1,95 +1,93 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:p="http://primefaces.org/ui"> 
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
 
-<h:head></h:head> 
-<body> 
-<p:growl autoUpdate="true"></p:growl>
-<div align="center">
-	<p:panel header="Sistema De Cita Medico" style="width:500px">
-	<h:form id="form1">
-		<p:panelGrid columns="2">
-		
-			<h:outputText value="Ingresar Cedula Paciente"></h:outputText>
-			<p:inputText maxlength="10" value="">
-				<f:validateLength minimum="10" maximum="10"></f:validateLength>
-			</p:inputText>
-			<h:outputText value="Ingresar Nombres"></h:outputText>
-			<p:inputText maxlength="20" value="" >	
-			</p:inputText>
-			<h:outputText value="Ingresar Apellido"></h:outputText>
-			<p:inputText maxlength="20" value="" >	
-			</p:inputText>
-			<h:outputText value="Ingrese su Edad"></h:outputText>
-			<p:inputText maxlength="20" value="" >	
-			</p:inputText>
-			<h:outputText value="Sexo: " />
-			<h:selectOneMenu value="">
-				<f:selectItem noSelectionOption="true" itemLabel="Seleccione......."/>
-				<f:selectItem itemValue="M" itemLabel="Masculino"/>
-				<f:selectItem itemValue="F" itemLabel="Femenino"/>
-			</h:selectOneMenu>
-			<h:outputText value="Fecha Nacimiento" />
-				<h:panelGroup>
-					<p:inputText value="" required="true" 
-					requiredMessage="Debe Indicar su fecha de nacimiento" />
-				</h:panelGroup>
-				<h:outputText value="Diagnostico" />
-				<h:panelGroup>
-					<p:inputTextarea value="" required="true" 
-					requiredMessage="Debe Indicar el Diagnostico del Jugador" />
-				</h:panelGroup>
-				<h:outputText value="Notas del Paciente" />
-				<h:panelGroup>
-					<p:inputTextarea value="" required="true" 
-					requiredMessage="Ponga la nota del Paciente " />
-				</h:panelGroup>
-			
-			
-			<p:commandButton value="Ingresar" icon="ui-icon-disk"
-						update="@form,:form2:tabla1" 
-						></p:commandButton>
-						<p:commandButton value="Cancelar" icon="ui-icon-disk"
-						update="@form,:form2:tabla1" 
-						></p:commandButton>
-			<p:messages autoUpdate="true"></p:messages>	
-		</p:panelGrid>
-		</h:form>
-		</p:panel>	
-		</div>
-		
-			<h:form id="form2">
-			<p:panel header="LISTA DE REGISTROS">
-				<p:dataTable value="" var="a"
-					id="tabla1">
-					<p:column headerText="CEDULA PACIENTE">
-						<h:outputText value="" />
-					</p:column>
-					<p:column headerText="NOMBRES">
-						<h:outputText value="" />
-					</p:column>
-					<p:column headerText="APELLIDO">
-						<h:outputText value="" />
-					</p:column>
-					<p:column headerText="EDAD">
-						<h:outputText value="" />
-					</p:column>
-					<p:column headerText="FECHA_NAC">
-						<h:outputText value="" />
-					</p:column>
-					<p:column headerText="DIAGNOSTICO">
-						<h:outputText value="" />
-					</p:column>
-					<p:column headerText="NOTA PACIENTE">
-						<h:outputText value="" />
-					</p:column>
-				</p:dataTable>
+<h:head></h:head>
+<body>
+	<p:growl autoUpdate="true"></p:growl>
+	<div align="center">
+		<p:panel header="Sistema De Cita Medico" style="width:500px">
+			<h:form id="form1">
+				<p:panelGrid columns="2">
 
-			</p:panel>
-		</h:form>
-	
-</body> 
+					<h:outputText value="Ingresar Cedula Paciente"></h:outputText>
+					<p:inputText maxlength="10" value="">
+						<f:validateLength minimum="10" maximum="10"></f:validateLength>
+					</p:inputText>
+					<h:outputText value="Ingresar Nombres"></h:outputText>
+					<p:inputText maxlength="20" value="">
+					</p:inputText>
+					<h:outputText value="Ingresar Apellido"></h:outputText>
+					<p:inputText maxlength="20" value="">
+					</p:inputText>
+					<h:outputText value="Ingrese su Edad"></h:outputText>
+					<p:inputText maxlength="20" value="">
+					</p:inputText>
+					<h:outputText value="Sexo: " />
+					<h:selectOneMenu value="">
+						<f:selectItem noSelectionOption="true"
+							itemLabel="Seleccione......." />
+						<f:selectItem itemValue="M" itemLabel="Masculino" />
+						<f:selectItem itemValue="F" itemLabel="Femenino" />
+					</h:selectOneMenu>
+					<h:outputText value="Fecha Nacimiento" />
+					<h:panelGroup>
+						<p:inputText value="" required="true"
+							requiredMessage="Debe Indicar su fecha de nacimiento" />
+					</h:panelGroup>
+					<h:outputText value="Diagnostico" />
+					<h:panelGroup>
+						<p:inputTextarea value="" required="true"
+							requiredMessage="Debe Indicar el Diagnostico del Jugador" />
+					</h:panelGroup>
+					<h:outputText value="Notas del Paciente" />
+					<h:panelGroup>
+						<p:inputTextarea value="" required="true"
+							requiredMessage="Ponga la nota del Paciente " />
+					</h:panelGroup>
+
+
+					<p:commandButton value="Ingresar" icon="ui-icon-disk"
+						update="@form,:form2:tabla1"></p:commandButton>
+					<p:commandButton value="Cancelar" icon="ui-icon-disk"
+						update="@form,:form2:tabla1"></p:commandButton>
+					<p:messages autoUpdate="true"></p:messages>
+				</p:panelGrid>
+			</h:form>
+		</p:panel>
+	</div>
+
+	<h:form id="form2">
+		<p:panel header="LISTA DE REGISTROS">
+			<p:dataTable value="" var="a" id="tabla1">
+				<p:column headerText="CEDULA PACIENTE">
+					<h:outputText value="" />
+				</p:column>
+				<p:column headerText="NOMBRES">
+					<h:outputText value="" />
+				</p:column>
+				<p:column headerText="APELLIDO">
+					<h:outputText value="" />
+				</p:column>
+				<p:column headerText="EDAD">
+					<h:outputText value="" />
+				</p:column>
+				<p:column headerText="FECHA_NAC">
+					<h:outputText value="" />
+				</p:column>
+				<p:column headerText="DIAGNOSTICO">
+					<h:outputText value="" />
+				</p:column>
+				<p:column headerText="NOTA PACIENTE">
+					<h:outputText value="" />
+				</p:column>
+			</p:dataTable>
+
+		</p:panel>
+	</h:form>
+
+</body>
 </html>
