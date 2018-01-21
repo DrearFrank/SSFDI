@@ -1,11 +1,101 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html"> 
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
 
-<h:head></h:head> 
-<body> 
+<h:head></h:head>
+<body>
+	<div align="center">
+		<p:panel header="INGRESAR CONSULTA MEDICA" style="width:500px">
+			<h:form id="form1">
+				<p:panelGrid columns="2">
+				<h:outputText value="Ingresar Cedula Paciente"></h:outputText>
+					<p:inputText maxlength="10" value="">
+						<f:validateLength minimum="10" maximum="10"></f:validateLength>
+					</p:inputText>
+					<h:outputText value="Nombre"></h:outputText>
+					<p:inputText requiredMessage="Ingrese su nombre" value="" required="true">
+					</p:inputText>
+					<h:outputText value="Apellido"></h:outputText>
+					<p:inputText required="true" value="" requiredMessage="Ingrese su apellido">
+					</p:inputText>
+					<h:outputText value="Edad" />
+					<h:panelGroup>
+					<p:inputText required="true" 
+					requiredMessage="Ingrese su edad">
+					</p:inputText>
+					</h:panelGroup>
+					<h:outputText value="Sexo: " />
+					<h:selectOneMenu value="">
+						<f:selectItem noSelectionOption="true"
+							itemLabel="Seleccione......." />
+						<f:selectItem itemValue="M" itemLabel="Masculino" />
+						<f:selectItem itemValue="F" itemLabel="Femenino" />
+					</h:selectOneMenu>
+					<h:outputText value="Nota Paciente" />
+					<h:panelGroup>
+					<p:inputTextarea required="true" 
+					requiredMessage="Ingrese Nota del paciente">
+					</p:inputTextarea>
+					</h:panelGroup>
+					<h:outputText value="Diagnostico" />
+					<h:panelGroup>
+					<p:inputTextarea required="true" 
+					requiredMessage="Ingrese el diagnostico del paciente">
+					</p:inputTextarea>
+					</h:panelGroup>
+					<h:outputText value="Reposo: " />
+					<h:selectOneMenu value="">
+						<f:selectItem noSelectionOption="true"
+							itemLabel="Seleccione......." />
+						<f:selectItem itemValue="S" itemLabel="SI" />
+						<f:selectItem itemValue="N" itemLabel="NO" />
+					</h:selectOneMenu>
+					<p:commandButton value="Ingresar" icon="ui-icon-disk"
+						update="@form"></p:commandButton>
+						<p:commandButton value="Salir" icon="ui-icon-cancel"></p:commandButton>
+					<p:messages autoUpdate="true"></p:messages>
 
-</body> 
+				</p:panelGrid>
+			</h:form>
+		</p:panel>
+	</div>
+	<h:form id="form2">
+		<p:panel header="LISTA DE REGISTROS">
+			<p:dataTable value="" var="a" id="tabla1">
+			<p:column headerText="CEDULA">
+					<h:outputText value="" />
+				</p:column>
+				<p:column headerText="NOMBRES">
+					<h:outputText value="" />
+				</p:column>
+				<p:column headerText="APELLIDO">
+					<h:outputText value="" />
+				</p:column>
+				<p:column headerText="EDAD">
+					<h:outputText value="" />
+				</p:column>
+				<p:column headerText="SEXO">
+					<h:outputText value="" />
+				</p:column>
+				<p:column headerText="NOTA DEL PACIENTE">
+					<h:outputText value="" />
+				</p:column>
+				<p:column headerText="DIAGNOSTICO">
+					<h:outputText value="" />
+				</p:column>
+				<p:column headerText="REPOSO">
+					<h:outputText value="" />
+				</p:column>
+				<p:column headerText="ASIG. DIAS REPOSO">
+					<h:outputText value="" />
+				</p:column>
+			</p:dataTable>
+
+		</p:panel>
+	</h:form>
+
+</body>
 </html>
