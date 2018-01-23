@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+	<persistence-unit name="fdiDS" transaction-type="JTA">
+		<jta-data-source>java:/fdiDS</jta-data-source>
+		<class>fdi.model.entities.Login</class>
+		<class>fdi.model.entities.ModadCategoria</class>
+		<class>fdi.model.entities.ModadDeportista</class>
+		<class>fdi.model.entities.ModadDeportistaPK</class>
+		<class>fdi.model.entities.ModadHorario</class>
+		<class>fdi.model.entities.ModadLugarEntrenamientoDepor</class>
+		<class>fdi.model.entities.ModadRole</class>
+		<class>fdi.model.entities.ModadUsuario</class>
+		<class>fdi.model.entities.ModadUsuarioPK</class>
+		<class>fdi.model.entities.ModdepPosicionDeportista</class>
+		<class>fdi.model.entities.ModdepRegistroRendimiento</class>
+		<class>fdi.model.entities.ModdepTest</class>
+		<class>fdi.model.entities.ModfinDetalleIngreso</class>
+		<class>fdi.model.entities.ModfinDetallePagoUsuario</class>
+		<class>fdi.model.entities.ModfinEgreso</class>
+		<class>fdi.model.entities.ModfinIngreso</class>
+		<class>fdi.model.entities.ModfinTipoEgreso</class>
+		<class>fdi.model.entities.ModmedConsultaMedica</class>
+	</persistence-unit>
+</persistence>
