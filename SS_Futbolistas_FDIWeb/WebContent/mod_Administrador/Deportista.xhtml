@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head></h:head>
+<body>
+
+	<p:panel header="Ingrese datos del Deportista">
+		<h:form>
+		<h3>INGRESO DE DEPORTISTAS DE LA FDI</h3>
+			<h:panelGrid columns="2">
+				<h:outputText value="Cedula:" />
+				<p:inputText/>
+				<h:outputText value="Nombres:" />
+				<p:inputText/>
+				<h:outputText value="Apellidos:" />
+				<p:inputText />
+				<h:outputText value="Fecha de Nacimiento:" />
+				<p:inputText />
+				<h:outputText value="Teléfono:" />
+				<p:inputText />
+				<h:outputText value="Dirección:" />
+				<p:inputText />
+				<h:outputText value="Teléfono:" />
+				<p:inputText />
+				<h:outputText value="Lugar de Nacimiento:" />
+				<p:inputText />
+				<h:outputText value="Email:" />
+				<p:inputText />
+				<h:outputText value="Sexo: " />
+				<h:selectOneMenu>
+					<f:selectItem noSelectionOption="true" itemLabel="Seleccione......."/>
+					<f:selectItem itemValue="M" itemLabel="Masculino"/>
+					<f:selectItem itemValue="F" itemLabel="Femenino"/>
+				</h:selectOneMenu>
+				<h:outputText value="Disciplina: " />
+				<h:selectOneMenu>
+					<f:selectItem noSelectionOption="true" itemLabel="Seleccione......."/>
+					<f:selectItem itemValue="F" itemLabel="Fútbol"/>
+					<f:selectItem itemValue="B" itemLabel="Basquet"/>
+					<f:selectItem itemValue="V" itemLabel="Voley"/>
+					<f:selectItem itemValue="K" itemLabel="Karate"/>
+					<f:selectItem itemValue="N" itemLabel="Natación"/>
+				</h:selectOneMenu>
+				<h:outputText value="Categoría: " />
+				<h:selectOneMenu>
+					<f:selectItem noSelectionOption="true" itemLabel="Seleccione......."/>
+					<f:selectItem itemValue="Sub11" itemLabel="Sub 11"/>
+					<f:selectItem itemValue="Sub15" itemLabel="Sub 15"/>
+					<f:selectItem itemValue="Sub20" itemLabel="Sub 20"/>
+					<f:selectItem itemValue="Sub25" itemLabel="Sub 25"/>
+					<f:selectItem itemValue="Sub30" itemLabel="Sub 30"/>
+				</h:selectOneMenu>
+				
+				<p:commandButton value="Registrar"></p:commandButton>
+				<p:commandButton value="Regresar al Menú" action="Menu"></p:commandButton>
+				<p:messages autoUpdate="true"></p:messages>
+			</h:panelGrid>
+		</h:form>
+
+	</p:panel>
+
+</body>
+</html>
