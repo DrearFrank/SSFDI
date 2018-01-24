@@ -12,20 +12,16 @@
 		<h:form>
 		<h3>INGRESO DE NUEVAS CATEGORIAS</h3>
 			<h:panelGrid columns="2">
-				<h:outputText value="idCategoria" />
-				<p:inputText required="true" requiredMessage="debe ingresar id categoria"/>
-				<h:outputText value="RangoCategoria" />
-				<p:inputText required="true" requiredMessage="debe ingresar rango de categoria"/>
+				<h:outputText value="Nombre_Categoria" />
+				<p:inputText required="true" requiredMessage="debe ingresar nombre Categoria"/>
+				<h:outputText value="Descripcion_Categoria" />
+				<p:inputText required="true" requiredMessage="debe ingresar descripcion de categoria"/>
 		
-
-				
 				<p:commandButton value="Registrar"></p:commandButton>
 								<p:messages autoUpdate="true"></p:messages>
 			</h:panelGrid>
 		</h:form>
 		<p:commandButton value="Regresar al Menú" action="Menu"></p:commandButton>
-		
-
 	</p:panel>
 
 </body>

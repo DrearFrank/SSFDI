@@ -16,11 +16,11 @@
 <p:panel header="Ingreso Datos a federados">
 <h:form>
 <h:panelGrid columns="2">
-<h:outputText value="C.I" />
+<h:outputText value="Cedula" />
 <p:inputText maxlength="10" value="" required="true"/>
-<h:outputText value="Nombre" />
+<h:outputText value="Nombres" />
 <p:inputText value="" required="true"/>
-<h:outputText value="Apellido" />
+<h:outputText value="Apellidos" />
 <p:inputText value=""/>
 <h:outputText value="Sexo " />
 			<h:selectOneMenu>
@@ -30,12 +30,14 @@
 			</h:selectOneMenu>
 <h:outputText value="Fecha Nac" />
 <p:inputText value="" required="true"/>
-<h:outputText value="Direccion" />
-<p:inputText value="" required="true"/>
 <h:outputText value="Lugar de Nac" />
+<p:inputText value="" required="true"/>
+<h:outputText value="Direccion" />
 <p:inputText value="" required="true"/>
 <h:outputText value="Correo Electronico" />
 <p:inputText value="" required="true"/>
+<h:outputText value="Telefono" />
+<p:inputText maxlength="10" value="" required="true"/>
 <h:outputText value="Categoria: " />
 			<h:selectOneMenu>
 				<f:selectItem noSelectionOption="true" itemLabel="Seleccione......."/>
@@ -43,16 +45,10 @@
 				<f:selectItem itemValue="E" itemLabel="Sub-18"/>
 				<f:selectItem itemValue="C" itemLabel="Sub-15"/>
 			</h:selectOneMenu>
-<h:outputText value="Telefono" />
+<h:outputText value="contraseña: " />
 <p:inputText maxlength="10" value="" required="true"/>
-<h:outputText value="Disciplina " />
-			<h:selectOneMenu>
-				<f:selectItem noSelectionOption="true" itemLabel="Seleccione......."/>
-				<f:selectItem itemValue="T" itemLabel="Futbol"/>
-				<f:selectItem itemValue="E" itemLabel="Atletismo"/>
-				<f:selectItem itemValue="E" itemLabel="Boli"/>
-				<f:selectItem itemValue="E" itemLabel="Natacion"/>
-			</h:selectOneMenu>
+
+
 <p:commandButton value="Ingresar"></p:commandButton>
 
 <p:messages autoUpdate="true"></p:messages>
