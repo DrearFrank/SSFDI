@@ -13,18 +13,16 @@
 			<p:panelGrid columns="2">
 
 				<h:outputText value="Cod_Tipo Egreso"></h:outputText>
-				<p:inputText value="#{controllerAnimalito.nombre}" id="nombre">
+				<p:inputText value="#{controllerTipoEgreso.codTipoEgreso}" id="codTipoEgreso">
 				</p:inputText>
 				<h:outputText value="Nombre"></h:outputText>
-				<p:inputText maxlength="20" value="#{controllerAnimalito.color}">
+				<p:inputText maxlength="20" value="#{controllerTipoEgreso.nombre}">
 				</p:inputText>
 				<h:outputText value="Descripción"></h:outputText>
-				<p:inputText maxlength="20" value="#{controllerAnimalito.edad}">
+				<p:inputText maxlength="20" value="#{controllerTipoEgreso.descripcion}">
 				</p:inputText>
-				<p:commandButton value="Agregar" icon="ui-icon-disk"
-					update="@form,:form2:tabla1"
-					actionListener="#{controllerAnimalito.actionListenerAgregar()}"></p:commandButton>
-				<p:messages autoUpdate="true"></p:messages>
+				<p:commandButton value="Validar" action="#{controllerTipoEgreso.actionInsertarTipoEgreso()}"></p:commandButton>
+			<p:messages autoUpdate="true"></p:messages>
 
 			</p:panelGrid>
 		</h:form>

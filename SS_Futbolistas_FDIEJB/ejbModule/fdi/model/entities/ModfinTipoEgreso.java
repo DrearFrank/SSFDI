@@ -17,7 +17,7 @@ public class ModfinTipoEgreso implements Serializable {
 
 	@Id
 	@Column(name="cod_tipo_egreso")
-	private long codTipoEgreso;
+	private Integer codTipoEgreso;
 
 	private String descripcion;
 
@@ -30,13 +30,19 @@ public class ModfinTipoEgreso implements Serializable {
 	public ModfinTipoEgreso() {
 	}
 
-	public long getCodTipoEgreso() {
-		return this.codTipoEgreso;
+
+
+	public Integer getCodTipoEgreso() {
+		return codTipoEgreso;
 	}
 
-	public void setCodTipoEgreso(long codTipoEgreso) {
+
+
+	public void setCodTipoEgreso(Integer codTipoEgreso) {
 		this.codTipoEgreso = codTipoEgreso;
 	}
+
+
 
 	public String getDescripcion() {
 		return this.descripcion;
