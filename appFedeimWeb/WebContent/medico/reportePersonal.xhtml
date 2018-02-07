@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Reporte Personal</title>
+</h:head>
+<body style="font-size:70%">
+	<h:form id="form1">
+		<p:commandButton action="menu" value="Regresar al Menu" />
+	</h:form>
+	<p:panel header="Reporte Personal">
+		<h:form>
+			<p:panelGrid columns="2" id="panelGrid1">
+				<h:outputText value="Cedula:" />
+				<p:inputText value="#{beanDeportista.ceduladeportista}" required="true"
+					requiredMessage="Debe ingresar la cedula." />
+				<h:outputText value="NOMBRE :" />
+				<p:inputText value="#{beanDeportista.nombres}"></p:inputText>
+					<h:outputText value="APELLIDO:" />
+				<p:inputText value="#{beanDeportista.apellidos}"></p:inputText>
+					
+			</p:panelGrid>
+
+			<p:commandButton value="Buscar Jugadorr"
+				
+				update=":form2,panelGrid1"></p:commandButton>
+				<p:commandButton value="Imprimir Reporte"
+				
+				update=":form2,panelGrid1"></p:commandButton>
+		</h:form>
+	</p:panel>
+	<h:form id="form2">
+	<p:messages></p:messages>
+	<p:dataTable border="1" value="#{beanDeportista.listadep}" var="p"
+		paginator="true" rows="6" id="tabla1">
+		<p:column headerText="CEDULA">
+			<h:outputText value="#{p.cedulaDeportista}"></h:outputText>
+		</p:column>
+		<p:column headerText="NOMBRE">
+			<h:outputText value="#{p.nombres}"></h:outputText>
+		</p:column>
+		<p:column headerText="APELLIDO">
+			<h:outputText value="#{p.apellidos}"></h:outputText>
+		</p:column>
+	
+		
+	</p:dataTable>
+	</h:form>
+</body>
+</html>

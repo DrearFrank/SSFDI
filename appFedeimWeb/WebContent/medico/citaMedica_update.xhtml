@@ -27,7 +27,7 @@
 			</h:selectOneMenu>
 			
 			<h:outputText value="Ingresar Nota Medica"></h:outputText>
-			<p:inputText maxlength="20" value="#{controllerMedico.notaMedica}" >	
+			<p:inputText  value="#{controllerMedico.notaMedica}" >	
 			</p:inputText>
 			<h:outputText value="Ingresar Diagnostico"></h:outputText>
 			<p:inputText maxlength="20" value="#{controllerMedico.diagnostico}" >	
@@ -42,7 +42,7 @@
 			<p:messages></p:messages>
 		</p:panelGrid>
 		<p:commandButton value="Actualizar Cita Medica"
-				action="#{controllerMedico.actionActulizarCitaMedica()}"
+				action="#{controllerMedico.acitionActulizarMedico()}"
 				update="panelGrid1"></p:commandButton>
 		
 		</h:form>

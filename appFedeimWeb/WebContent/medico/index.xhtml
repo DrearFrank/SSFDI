@@ -8,13 +8,23 @@
 <h:head></h:head> 
 <body> 
 <p:growl autoUpdate="true"></p:growl>
-<p:panel header="Ingreso Cita Medica">
+
+
 	<h:form id="form1">
-	<h:commandLink action="menu" value=" ...REGRESAR AL MENU..." />
+	<p:commandButton action="menu" value="Regresar al Menu" />
+	</h:form>
+	<p:panel header="Ingreso Cita Medica">
+	<h:form>
+	
 		<p:panelGrid columns="2">
 		<h:outputText value="Codigo Consulta"></h:outputText>
-			<p:inputText maxlength="20" value="#{controllerMedico.codConsulta}" >	
+			<p:inputText maxlength="10" value="#{controllerMedico.codConsulta}" id="Codigo" >
+			<f:validateLength minimum="1" maximum="10"></f:validateLength>	
 			</p:inputText>
+						
+				
+					
+							
 							
 			<h:outputText value="Estado: " />
 			<h:selectOneMenu value="#{controllerMedico.estado}">
@@ -23,19 +33,34 @@
 				<f:selectItem itemValue="PA" itemLabel="POR ATENDER"/>
 			</h:selectOneMenu>
 			
-			<h:outputText value="Ingresar Nota Medica"></h:outputText>
-			<p:inputText maxlength="20" value="#{controllerMedico.notaMedica}" >	
-			</p:inputText>
+			<h:outputText value="Ingresar Nota Medica"/>
+			<h:panelGroup>
+			<p:inputText maxlength="20" value="#{controllerMedico.notaMedica}" required="true"
+			requiredMessage="Debe Ingresar Nota Medica" id="nota"/>
+					<p:message for="nota"></p:message>
+				</h:panelGroup>
+			
+			
 			<h:outputText value="Ingresar Diagnostico"></h:outputText>
-			<p:inputText maxlength="20" value="#{controllerMedico.diagnostico}" >	
-			</p:inputText>
+			<h:panelGroup>
+			<p:inputText maxlength="20" value="#{controllerMedico.diagnostico}" required="true" 
+			requiredMessage="Debe Ingresar el Diagnostico" id="Diagnostico"/>
+					<p:message for="Diagnostico"></p:message>	
+			
+			</h:panelGroup>
+			
 			<h:outputText value="Ingresar Dias de Resposo"></h:outputText>
-			<p:inputText maxlength="20" value="#{controllerMedico.diasrepos}" >	
-			</p:inputText>
+			<h:panelGroup>
+			<p:inputText maxlength="20" value="#{controllerMedico.diasrepos}" required="true" 
+			requiredMessage="Ingrese los dias de Reposo" id="reposo"/>
+					<p:message for="reposo"></p:message>	
+			</h:panelGroup>
+			
 			<p:outputLabel for="button" value="Solicitud Consulta" />
         <p:calendar id="button" value="#{controllerMedico.fechaSolicutudConsula}" showOn="button" />
 		<p:outputLabel for="button1" value="Realizar Consulta" />
         <p:calendar id="button1" value="#{controllerMedico.fechaRealizaConsulata}" showOn="button" />
+			</p:panelGrid>
 			
 			<p:commandButton value="Agregar" icon="ui-icon-disk"
 						update="@form,:form2:tabla1"
@@ -43,11 +68,12 @@
 						></p:commandButton>
 			<p:messages autoUpdate="true"></p:messages>
 			
-		</p:panelGrid>
+		
 		</h:form>
+		</p:panel>
 			<h:form id="form2">
 			<p:panel header="LISTA DE REGISTROS DE CONSULTA MEDICA">
-				<p:dataTable value="#{controllerMedico.lista}" var="p"
+				<p:dataTable value="#{controllerMedico.listadoMe}" var="p"
 					id="tabla1">
 					<p:column headerText="CODIGO">
 						<h:outputText value="#{p.codConsulta}" />
@@ -73,20 +99,20 @@
 						<h:outputText value="#{p.fechaRealizaConsulata}" />
 					</p:column>
 					<p:column headerText="ACTUALIZAR">
-						<p:commandButton icon="ui-icon-comment"
-				action="#{controllerMedico.actionCargarCitaMedica(p)}"
+						<p:commandButton icon="ui-icon-pencil"
+				action="#{controllerMedico.actionCargarConsultaMedica(p)}"
 				update=":form2"></p:commandButton>
 					</p:column>
 					<p:column headerText="ELIMINAR">
-						<p:commandButton icon="ui-icon-cancel"
-				action="#{controllerMedico.actionEliminarCitaMedica(p)}"
+						<p:commandButton icon="ui-icon-close"
+				action="#{controllerMedico.actionEliminarCOnsultaMedica(p)}"
 				update=":form2"></p:commandButton>
 					</p:column>
 				</p:dataTable>
 
 			</p:panel>
 		</h:form>
-	</p:panel>	
+	
 </body> 
 </html>
 

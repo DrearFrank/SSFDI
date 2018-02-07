@@ -7,51 +7,52 @@ import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 
 import fedim.model.entities.ConsultaMedica;
-import fedim.model.entities.Deportista;
-import fedim.model.manager.ManagerDAO;
 
 @Stateless
 @LocalBean
 public class ManagerMedico {
+
 	@EJB
 	private ManagerDAO managerDAO;
-	@EJB
-	private ManagerAdmin managerAdmin;
 	public ManagerMedico() {
-		// TODO Auto-generated constructor stub
+		
 	}
+	
+	///Manejo Medico
 	@SuppressWarnings("unchecked")
-	public List<ConsultaMedica> findAllModfinConsultaMedica(){
-		return managerDAO.findAll(ConsultaMedica.class,"o.estado");
+	public List<ConsultaMedica>findAllMedico(){
+		return managerDAO.findAll(ConsultaMedica.class, "o.estado");
 	}
-	public ConsultaMedica findConsultaMedicaById(String codConsulta)throws Exception{
+	public ConsultaMedica findTestById(String codConsulta)throws Exception{
 		return (ConsultaMedica) managerDAO.findById(ConsultaMedica.class, codConsulta);
 	}
-	public void insertarTipoConsultaMedica(ConsultaMedica p) throws Exception{
-		//ModadDeportista d=findDeportista(cedulaDep);
-		//p.setModadDeportista(d);
+	//insertar Consulta medica
+	public void insertarConsultMedica(ConsultaMedica p) throws Exception{
 		managerDAO.insertar(p);
 	}
-	public void eliminarCitaMedica(String codConsulta) throws Exception{
-		managerDAO.eliminar(ConsultaMedica.class,codConsulta );
+	//ELEIMINAR CONSULTA MEDICA
+	public void eliminarConsultaMedica(String codConsulta) throws Exception{
+		managerDAO.eliminar(ConsultaMedica.class, codConsulta);
 	}
-	public void actualizarCitaMedico(ConsultaMedica citaM)throws Exception{
-		ConsultaMedica p = null;
+	//ACTUALIZAR CONSULTA MEDICA
+	public void actualizarConsultaMedica(ConsultaMedica consulta )throws Exception{
+		ConsultaMedica p=null;
 		try {
-			//buscamos el test a modificar desde la bdd:
-			p=findConsultaMedicaById(citaM.getCodConsulta());
-			//actualizamos las propiedades:
-			p.setEstado(citaM.getEstado());
-			p.setNotaMedica(citaM.getNotaMedica());
-			p.setDiagnostico(citaM.getDiagnostico());
-			p.setDiasrepos(citaM.getDiasrepos());
-			p.setFechaSolicutudConsula(citaM.getFechaSolicutudConsula());
-			p.setFechaRealizaConsulata(citaM.getFechaRealizaConsulata());
+			//buscamos la consulta a modificar desd la bdd
+			p=findTestById(consulta.getCodConsulta());
+			//actualizamos las propiedades
+			p.setDeportista(consulta.getDeportista());
+			p.setDiagnostico(consulta.getDiagnostico());
+			p.setDiasrepos(consulta.getDiasrepos());
+			p.setEstado(consulta.getEstado());
+			p.setFechaSolicutudConsula(consulta.getFechaSolicutudConsula());
+			p.setFechaRealizaConsulata(consulta.getFechaRealizaConsulata());
+			p.setNotaMedica(consulta.getNotaMedica());
+			//actualizamos
 			managerDAO.actualizar(p);
-		} catch (Exception e) {
+		}catch (Exception e) {
 			e.printStackTrace();
 			throw new Exception(e.getMessage());
 		}
 	}
-
 }
