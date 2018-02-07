@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"> 
+
+<h:head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Actualizar Datos Cita Medica</title>
+</h:head> 
+<body> 
+<p:panel header="Actualización de Cita Medica">
+	<h:form>
+		<p:panelGrid columns="2" id="panelGrid1">
+		<h:outputText value="Codigo Consulta"></h:outputText>
+			<h:panelGroup>
+				  <h:outputText value="#{controllerMedico.codConsulta}" />
+				  <h:inputHidden value="#{controllerMedico.codConsulta}" />
+				</h:panelGroup>
+							
+			<h:outputText value="Estado: " />
+			<h:selectOneMenu value="#{controllerMedico.estado}">
+				<f:selectItem noSelectionOption="true" itemLabel="Seleccione......."/>
+				<f:selectItem itemValue="A" itemLabel="ATENDIDO"/>
+				<f:selectItem itemValue="PA" itemLabel="POR ATENDER"/>
+			</h:selectOneMenu>
+			
+			<h:outputText value="Ingresar Nota Medica"></h:outputText>
+			<p:inputText maxlength="20" value="#{controllerMedico.notaMedica}" >	
+			</p:inputText>
+			<h:outputText value="Ingresar Diagnostico"></h:outputText>
+			<p:inputText maxlength="20" value="#{controllerMedico.diagnostico}" >	
+			</p:inputText>
+			<h:outputText value="Ingresar Dias de Resposo"></h:outputText>
+			<p:inputText maxlength="20" value="#{controllerMedico.diasrepos}" >	
+			</p:inputText>
+			<p:outputLabel for="button" value="Solicitud Consulta" />
+        <p:calendar id="button" value="#{controllerMedico.fechaSolicutudConsula}" showOn="button" />
+		<p:outputLabel for="button1" value="Realizar Consulta" />
+        <p:calendar id="button1" value="#{controllerMedico.fechaRealizaConsulata}" showOn="button" />
+			<p:messages></p:messages>
+		</p:panelGrid>
+		<p:commandButton value="Actualizar Cita Medica"
+				action="#{controllerMedico.actionActulizarCitaMedica()}"
+				update="panelGrid1"></p:commandButton>
+		
+		</h:form>
+	</p:panel>	
+</body> 
+</html>
+
+

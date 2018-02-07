@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Seguimiento Deportista</title>
+</h:head>
+<body style="font-size: 70%">
+	<h2>Seguimiento de Futbolistas</h2>
+	<h:form id="form1">
+		<p:commandButton value="Salir" action="#{beanLogin.salirSistema()}" icon="ui-icon-extlink"/>
+	</h:form>
+	<p:panel id="panel1">
+	<h:form id="form2">
+		<p:panel header="Datos del Deportista">
+			<p:commandButton action="#{beanSeguimiento.crearNuevaSeguimiento()}"
+				value="Crear nuevo Registro Seguimiento" update="form2 :form3" />
+			<p:panelGrid columns="2">
+				<h:outputText value="Nro. de Seguiento:" style="font-weight: bold" />
+				<h:outputText value="#{beanSeguimiento.seguiCabTmp.numeroSegui}" />
+				<h:outputText value="Fecha del control:" style="font-weight: bold" />
+				<h:outputText value="#{beanSeguimiento.seguiCabTmp.fechaEmision}">
+					<f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+				</h:outputText>
+				<h:outputText value="Seleccione el Deportista:"
+					style="font-weight: bold" />
+				<h:panelGroup>
+					<p:selectOneMenu value="#{beanSeguimiento.cedulaDeportista}">
+						<f:selectItem itemLabel="Seleccione..." itemValue="" noSelectionOption="true"/>
+						<f:selectItems value="#{beanSeguimiento.listaDeportistaSI}" />
+						<p:ajax update="cedulaDeportista,mensajes"
+							listener="#{beanSeguimiento.asignarDeportista()}"></p:ajax>
+							
+							
+					</p:selectOneMenu>
+				</h:panelGroup>
+				<h:outputText value="Cedula del deportista:" style="font-weight: bold" />
+				<h:outputText id="cedulaDeportista"
+					value="#{ beanSeguimiento.cedulaDeportista}" />
+				<h:commandButton value="Guardar Registro"
+					action="#{beanSeguimiento.guardarSeguimiento()}" />
+				<p:messages id="mensajes" />
+			
+			</p:panelGrid>
+		</p:panel>
+	</h:form>
+	<h:form id="form3">
+		<p:panel header="Parametros TEST">
+			<p:panelGrid columns="5" border="1">
+			
+			
+					<h:outputText value="Test:" />
+				<h:selectOneMenu value="#{beanSeguimiento.codigoTest}">
+					<f:selectItem itemLabel="Seleccione test ..." itemValue="-1" />
+					<f:selectItems value="#{beanSeguimiento.listaTestSI}" />
+					<p:ajax update="mensajes2"
+							></p:ajax>
+				</h:selectOneMenu>
+				<h:outputText value="valor realizado:" />
+				<h:inputText value="#{beanSeguimiento.cantidadTest}" />
+				<p:commandButton value="adicionar Test"
+					action="#{beanSeguimiento.insertarDetalleTest}" update="form3"
+					icon="ui-icon-plusthick" />
+					
+			</p:panelGrid>
+			
+			<p:messages id="mensajes2"></p:messages>
+			<p:dataTable value="#{beanSeguimiento.seguiCabTmp.testDets}"
+				var="d" id="tablaSeguiDets">
+				<f:facet name="header">
+					<h:outputText value="Detalle del TEST:" />
+				</f:facet>
+				<p:column style="width:60px">
+					<f:facet name="header">
+					CODIGO TEST
+				</f:facet>
+					<h:outputText value="#{d.test.codigoTest}" />
+				</p:column>
+				<p:column>
+					<f:facet name="header">
+					NOMBRE TEST
+				</f:facet>
+					<h:outputText value="#{d.test.nombretest}" />
+				</p:column>
+				<p:column>
+					<f:facet name="header">
+					DESCRIPCION DEL TEST
+				</f:facet>
+					<h:outputText value="#{d.test.descripcion}" />
+				</p:column>
+				<p:column style="width:100px">
+					<f:facet name="header">
+					VALOR INDICE APTO
+				</f:facet>
+					<h:outputText value="#{d.indiceValorTest}" />
+				</p:column>
+				<p:column style="width:40px">
+					<f:facet name="header">
+					VALOR REALIZADOS
+				</f:facet>
+					<h:outputText value="#{d.cantidad}" />
+				</p:column>
+				<p:column style="width:120px;text-align:right">
+					<f:facet name="header">
+					SUBTOTAL(%)
+
+				</f:facet>
+					<h:outputText value="#{(d.cantidad*100)/d.indiceValorTest}" style="text-align:right"/>
+					<f:facet name="footer">
+						<h:panelGrid columns="2"
+							style="font-weight: bold; text-align:right">
+							<h:outputText value="SUMA:" />
+							<h:outputText value="#{beanSeguimiento.seguiCabTmp.subtotalporcentaje}">
+								<f:convertNumber maxFractionDigits="2" minFractionDigits="2"
+									currencySymbol="$" />
+							</h:outputText>
+							<h:outputText value="TOTAL:" />
+							<h:outputText value="#{beanSeguimiento.seguiCabTmp.totalporcentaje}">
+								<f:convertNumber maxFractionDigits="2" minFractionDigits="2"
+									currencySymbol="$" />
+							</h:outputText>
+						
+					
+						</h:panelGrid>
+					</f:facet>
+				</p:column>
+			</p:dataTable>
+		</p:panel>
+	</h:form>
+	</p:panel>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Actualizar Datos jugador</title>
+</h:head>
+<body>
+	<p:panel header="Actualización de TEST">
+		<h:form>
+			<p:panelGrid columns="2" id="panelGrid1">
+				<h:outputText value="Cedula Jugador:" />
+				<h:panelGroup>
+					<h:outputText value="#{beanDeportista.ceduladeportista}" />
+					<h:inputHidden value="#{beanDeportista.ceduladeportista}" />
+				</h:panelGroup>
+				<h:outputText value="NOMBRE :" />
+				<p:inputText value="#{beanDeportista.nombres}"></p:inputText>
+				<h:outputText value="APELLIDO:" />
+				<p:inputText value="#{beanDeportista.apellidos}"></p:inputText>
+				<h:outputText value="DIRECCION:" />
+				<p:inputText value="#{beanDeportista.direccion}"></p:inputText>
+				<h:outputText value="Correo Electronico:" />
+				<p:inputText value="#{beanDeportista.correoelec}"></p:inputText>
+
+
+				<h:outputText value="CATEGORIA:" />
+				<h:selectOneMenu value="#{beanDeportista.categoria}">
+					<f:selectItem noSelectionOption="true" itemLabel="Seleccione..." />
+					<f:selectItem itemValue="inferior" itemLabel="inferior" />
+					<f:selectItem itemValue="intermedio" itemLabel="intermedio" />
+					<f:selectItem itemValue="superior" itemLabel="superior" />
+					<f:selectItem itemValue="senior" itemLabel="senior" />
+
+				</h:selectOneMenu>
+
+				<h:outputText value="POSISION JUGADOR:" />
+				<h:selectOneMenu value="#{beanDeportista.posisionjugador}">
+					<f:selectItem noSelectionOption="true" itemLabel="Seleccione..." />
+					<f:selectItem itemValue="Delantero" itemLabel="Delantero" />
+					<f:selectItem itemValue="Defensa" itemLabel="Defensa" />
+					<f:selectItem itemValue="Central" itemLabel="Central" />
+					<f:selectItem itemValue="VolanteDer" itemLabel="VolanteDer" />
+					<f:selectItem itemValue="VolanteIzq" itemLabel="VolanteIzq" />
+					<f:selectItem itemValue="Arquero" itemLabel="Arquero" />
+
+				</h:selectOneMenu>
+				<h:outputText value="Contraseña:" />
+				<p:inputText value="#{beanDeportista.clave}"></p:inputText>
+
+				<p:messages></p:messages>
+			</p:panelGrid>
+
+			<p:commandButton value="Actualizar"
+				action="#{beanDeportista.actionActualizarDeportista()}"
+				update="panelGrid1"></p:commandButton>
+		</h:form>
+	</p:panel>
+</body>
+</html>

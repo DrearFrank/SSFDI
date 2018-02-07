@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Actualizar Datos jugador</title>
+</h:head>
+<body>
+	<p:panel header="Actualización de TEST">
+		<h:form>
+			<p:panelGrid columns="2" id="panelGrid1">
+				<h:outputText value="Codigo Lugar:" />
+				<h:panelGroup>
+					<h:outputText value="#{beanlugar.codLugar}" />
+					<h:inputHidden value="#{beanlugar.codLugar}" />
+				</h:panelGroup>
+				<h:outputText value="NOMBRE :" />
+				<p:inputText value="#{beanlugar.nombre}"></p:inputText>
+				<h:outputText value="DIRECCION:" />
+				<p:inputText value="#{beanlugar.direccion}"></p:inputText>
+				<h:outputText value="DESCRIPCION:" />
+				<p:inputText value="#{beanlugar.descripcion}"></p:inputText>
+
+			<p:messages></p:messages>
+			</p:panelGrid>
+
+			<p:commandButton value="Actualizar"
+				action="#{beanlugar.actionActualizarLugar()}"
+				update="panelGrid1"></p:commandButton>
+		</h:form>
+	</p:panel>
+</body>
+</html>

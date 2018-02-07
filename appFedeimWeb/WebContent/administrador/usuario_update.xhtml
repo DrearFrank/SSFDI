@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>ACTUALIZAR DATOS DE DEPORTISTA</title>
+</h:head>
+<body>
+	<p:panel header="ACTUALIZAR DATOS DE DEPORTISTA">
+		<h:form>
+			<p:panelGrid columns="2" id="panelGrid1">
+				<h:outputText value="Cedula Usuario:" />
+				<h:panelGroup>
+				  <h:outputText value="#{beanUsuario.codigoUsuario}" />
+				  <h:inputHidden value="#{beanUsuario.codigoUsuario}" />
+				</h:panelGroup>
+			<h:outputText value="NOMBRE :" />
+				<p:inputText value="#{beanUsuario.nombresusuario}"></p:inputText>
+					<h:outputText value="APELLIDO:" />
+				<p:inputText value="#{beanUsuario.apellidousuario}"></p:inputText>
+					<h:outputText value="DIRECCION:" />
+				<p:inputText value="#{beanUsuario.udireccion}"></p:inputText>
+			<h:outputText value="Correo Electronico:" />
+				<p:inputText value="#{beanUsuario.ucorreo}"></p:inputText>
+											
+						<h:outputText value="Rol:" />
+			<h:selectOneMenu value="#{beanUsuario.tipousuario}">
+				<f:selectItem noSelectionOption="true" itemLabel="Seleccione..." />
+					<f:selectItem itemValue="En" itemLabel="Entrenador" />
+					<f:selectItem itemValue="AD" itemLabel="Administrador" />
+					<f:selectItem itemValue="FI" itemLabel="Financiero" />
+					<f:selectItem itemValue="ME" itemLabel="Medico" />
+
+			</h:selectOneMenu>
+				
+						<h:outputText value="Contraseña:" />
+				<p:inputText value="#{beanUsuario.clave}"></p:inputText>
+								
+				<p:messages></p:messages>
+			</p:panelGrid>
+
+			<p:commandButton value="Actualizar"
+				action="#{beanUsuario.actionActualizarUsuario()}"
+				update="panelGrid1"></p:commandButton>
+		</h:form>
+	</p:panel>
+</body>
+</html>

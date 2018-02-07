@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>INDICE TEST</title>
+</h:head>
+<body style="font-size:70%">
+	<h:form id="form1">
+		<h:commandLink action="menu" value=" ...REGRESAR AL MENU..." />
+	</h:form>
+	<p:panel header="Ingreso de nuevo TEST">
+		<h:form>
+			<p:panelGrid columns="2" id="panelGrid1">
+				<h:outputText value="ID:" />
+				<p:inputText value="#{beanTest.codigoTest}" required="true"
+					requiredMessage="Debe ingresar un código Test." />
+				<h:outputText value="NOMBRE TEST:" />
+				<p:inputText value="#{beanTest.nombretest}"></p:inputText>
+				<h:outputText value="DESCRIPCION TEST:" />
+				<p:inputText value="#{beanTest.descripciontest}"></p:inputText>
+				<h:outputText value="VALOR INDICE :" />
+				<p:spinner value="#{beanTest.inidcevalor}" />
+				
+				<p:messages></p:messages>
+			</p:panelGrid>
+
+			<p:commandButton value="Insertar TEST"
+				action="#{beanTest.actionInsertarTest()}"
+				update=":form2,panelGrid1"></p:commandButton>
+		</h:form>
+	</p:panel>
+	<h:form id="form2">
+	<p:messages></p:messages>
+	<p:dataTable border="1" value="#{beanTest.listatest}" var="p"
+		paginator="true" rows="6" id="tabla1">
+		<p:column headerText="CODIGO TEST">
+			<h:outputText value="#{p.codigoTest}"></h:outputText>
+		</p:column>
+		<p:column headerText="NOMBRE TEST">
+			<h:outputText value="#{p.nombretest}"></h:outputText>
+		</p:column>
+		<p:column headerText="DESCRIPCION TEST">
+			<h:outputText value="#{p.descripcion}"></h:outputText>
+		</p:column>
+		<p:column headerText="VALOR INDICE">
+			<h:outputText value="#{p.indiceValor}"></h:outputText>
+		</p:column>
+		<p:column headerText="ELIMINAR">
+			<p:commandButton icon="ui-icon-cancel"
+				action="#{beanTest.actionEliminarTest(p)}"
+				update=":form2"></p:commandButton>
+		</p:column>
+		<p:column headerText="ACTUALIZAR">
+			<p:commandButton icon="ui-icon-comment"
+				action="#{beanTest.actionCargarTest(p)}"
+				update=":form2"></p:commandButton>
+		</p:column>
+	</p:dataTable>
+	</h:form>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:ui="http://java.sun.com/jsf/facelets"
+xmlns:f="http://java.sun.com/jsf/core"
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Menu Entrenador</title>
+</h:head>
+<body>
+
+<p:panel header="FUNCIONES DEL ENTRENADOR">
+<p:messages autoUpdate="true"></p:messages>
+<h:form id="form1">
+<p:growl autoUpdate="true"/>
+ 
+    <p:panelMenu style="width:300px">
+    
+         <p:submenu label="Control de Jugadores" >
+        <p:menuitem value="Seguimiento Jugadores" action="seguimientodeportista"/>
+         </p:submenu>
+        
+        <p:submenu label="Estado Jugadores" >
+        <p:menuitem value="Ver Estado Jugador" action="estadojugador"/>
+       </p:submenu>
+        <p:submenu label="IndicesTest" >
+        <p:menuitem value="Control indices"  action="test"/>
+        </p:submenu>
+       
+        <p:submenu label="Reportes" >
+        <p:menuitem value="Realizar Reportes"  action="reporte"/>
+        </p:submenu>
+        
+           
+        <p:submenu label="Registro JUGADOR" >
+        <p:menuitem value="Registrar jugador"  action="registrojugador"/>
+        </p:submenu>
+   
+    </p:panelMenu>		
+	</h:form>
+</p:panel>
+</body>
+</html>

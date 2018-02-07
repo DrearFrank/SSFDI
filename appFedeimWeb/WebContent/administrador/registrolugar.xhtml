@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Registro Jugador</title>
+</h:head>
+<body style="font-size:70%">
+	<h:form id="form1">
+		<h:commandLink action="menu" value=" ...REGRESAR AL MENU..." />
+	</h:form>
+	<p:panel header="Ingreso de nuevo Lugar">
+		<h:form>
+			<p:panelGrid columns="2" id="panelGrid1">
+				<h:outputText value="Codigo:" />
+				<p:inputText value="#{beanlugar.codLugar}" required="true" requiredMessage="Debe ingresar la cedula." />
+				<h:outputText value="NOMBRE :" />
+				<p:inputText value="#{beanlugar.nombre}"></p:inputText>
+				<h:outputText value="DIRECCION:" />
+				<p:inputText value="#{beanlugar.direccion}"></p:inputText>
+				<h:outputText value="DESCRIPCION:" />
+				<p:inputText value="#{beanlugar.descripcion}"></p:inputText>
+				<p:messages></p:messages>
+			</p:panelGrid>
+
+
+			<p:commandButton value="Insertar Categoria"
+				action="#{beanlugar.actionInsertarLugar()}"
+				update=":form2,panelGrid1"></p:commandButton>
+
+		</h:form>
+	</p:panel>
+	<h:form id="form2">
+	<p:messages></p:messages>
+	<p:dataTable border="1" value="#{beanlugar.listalug}" var="p"
+		paginator="true" rows="6" id="tabla1">
+		<p:column headerText="CODIGO">
+			<h:outputText value="#{p.codLugar}"></h:outputText>
+		</p:column>
+		<p:column headerText="NOMBRE">
+			<h:outputText value="#{p.nombre}"></h:outputText>
+		</p:column>
+		<p:column headerText="Direccion">
+			<h:outputText value="#{p.direccion}"></h:outputText>
+		</p:column>
+		<p:column headerText="Descripcion">
+			<h:outputText value="#{p.descripcion}"></h:outputText>
+		</p:column>			
+		
+		<p:column headerText="ELIMINAR">
+			<p:commandButton icon="ui-icon-cancel"
+				action="#{beanlugar.actionEliminarLugar(p)}"
+				update=":form2"></p:commandButton>
+		</p:column>
+		<p:column headerText="ACTUALIZAR">
+			<p:commandButton icon="ui-icon-comment"
+				action="#{beanlugar.actionCargarLugar(p)}"
+				update=":form2"></p:commandButton>
+		</p:column>
+	</p:dataTable>
+	</h:form>
+</body>
+</html>

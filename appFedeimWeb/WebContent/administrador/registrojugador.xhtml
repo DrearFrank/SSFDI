@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Registro Jugador</title>
+</h:head>
+<body style="font-size:70%">
+	<h:form id="form1">
+		<h:commandLink action="menu" value=" ...REGRESAR AL MENU..." />
+	</h:form>
+	<p:panel header="Ingreso de nuevo jugador">
+		<h:form>
+			<p:panelGrid columns="2" id="panelGrid1">
+				<h:outputText value="Cedula:" />
+				<p:inputText value="#{beanDeportista.ceduladeportista}" required="true"
+					requiredMessage="Debe ingresar la cedula." />
+				<h:outputText value="NOMBRE :" />
+				<p:inputText value="#{beanDeportista.nombres}"></p:inputText>
+					<h:outputText value="APELLIDO:" />
+				<p:inputText value="#{beanDeportista.apellidos}"></p:inputText>
+					<h:outputText value="Sexo:" />
+			<h:selectOneMenu value="#{beanDeportista.sexo}">
+				<f:selectItem noSelectionOption="true" itemLabel="Seleccione..." />
+				<f:selectItem itemValue="Masculino" itemLabel="Masculino" />
+				<f:selectItem itemValue="Femenino" itemLabel="Femenino" />
+			</h:selectOneMenu>
+			<h:outputText value="Lugar de Nacimiento:" />
+				<p:inputText value="#{beanDeportista.lugarnac}" ></p:inputText>
+			<h:outputText value="Correo Electronico:" />
+				<p:inputText value="#{beanDeportista.correoelec}" required="true"
+					requiredMessage="Debe ingresar la correo." />
+					<h:outputText value="DIRECCION:" />
+				<p:inputText value="#{beanDeportista.direccion}"></p:inputText>
+		<h:outputText value="CATEGORIA:" />
+			<h:selectOneMenu value="#{beanDeportista.categoria}">
+				<f:selectItem noSelectionOption="true" itemLabel="Seleccione..." />
+				<f:selectItem itemValue="inferior" itemLabel="inferior" />
+				<f:selectItem itemValue="intermedio" itemLabel="intermedio" />
+				<f:selectItem itemValue="superior" itemLabel="superior" />
+				<f:selectItem itemValue="senior" itemLabel="senior" />
+			</h:selectOneMenu>
+				
+						<h:outputText value="POSISION JUGADOR:" />
+			<h:selectOneMenu value="#{beanDeportista.posisionjugador}">
+				<f:selectItem noSelectionOption="true" itemLabel="Seleccione..." />
+				<f:selectItem itemValue="Delantero" itemLabel="Delantero" />
+				<f:selectItem itemValue="Defensa" itemLabel="Defensa" />
+				<f:selectItem itemValue="Central" itemLabel="Central" />
+					<f:selectItem itemValue="VolanteDer" itemLabel="VolanteDer" />
+						<f:selectItem itemValue="VolanteIzq" itemLabel="VolanteIzq" />
+							<f:selectItem itemValue="Arquero" itemLabel="Arquero" />
+							
+
+			</h:selectOneMenu>
+			<h:outputText value="Estado:" />
+			<h:selectOneMenu value="#{beanDeportista.estado}" var="name" varStatus="status">
+				<f:selectItem noSelectionOption="true" itemLabel="Seleccione..." />
+				<f:selectItem itemValue="True" itemLabel="activo" />
+				<f:selectItem itemValue="False" itemLabel="inactivo" />
+				</h:selectOneMenu>
+				<h:outputText value="Contraseña:" />
+				<p:inputText value="#{beanDeportista.clave}"></p:inputText>
+				
+				
+				
+				<p:messages></p:messages>
+			</p:panelGrid>
+
+
+
+
+
+			<p:commandButton value="Insertar Jugador"
+				action="#{beanDeportista.actionInsertarDeportista()}"
+				update=":form2,panelGrid1"></p:commandButton>
+				
+				
+
+
+
+
+				
+				
+		</h:form>
+	</p:panel>
+	<h:form id="form2">
+	<p:messages></p:messages>
+	<p:dataTable border="1" value="#{beanDeportista.listadep}" var="p"
+		paginator="true" rows="6" id="tabla1">
+		<p:column headerText="CEDULA">
+			<h:outputText value="#{p.cedulaDeportista}"></h:outputText>
+		</p:column>
+		<p:column headerText="NOMBRE">
+			<h:outputText value="#{p.nombres}"></h:outputText>
+		</p:column>
+		<p:column headerText="APELLIDO">
+			<h:outputText value="#{p.apellidos}"></h:outputText>
+		</p:column>
+		<p:column headerText="DIRECCION">
+			<h:outputText value="#{p.direccion}"></h:outputText>
+		</p:column>
+			<p:column headerText="CATEGORIA">
+			<h:outputText value="#{p.categoria}"></h:outputText>
+		</p:column>	
+		<p:column headerText="CORREO">
+			<h:outputText value="#{p.correoelec}"></h:outputText>
+		</p:column>	
+		<p:column headerText="POSISION">
+			<h:outputText value="#{p.posisionjug}"></h:outputText>
+		</p:column>
+			
+		
+		<p:column headerText="ELIMINAR">
+			<p:commandButton icon="ui-icon-cancel"
+				action="#{beanDeportista.actionEliminarDeportista(p)}"
+				update=":form2"></p:commandButton>
+		</p:column>
+		<p:column headerText="ACTUALIZAR">
+			<p:commandButton icon="ui-icon-comment"
+				action="#{beanDeportista.actionCargarDeportista(p)}"
+				update=":form2"></p:commandButton>
+		</p:column>
+	</p:dataTable>
+	</h:form>
+</body>
+</html>

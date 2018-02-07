@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"> 
+
+<h:head></h:head> 
+<body> 
+<p:growl autoUpdate="true"></p:growl>
+<p:panel header="Ingreso Cita Medica">
+	<h:form id="form1">
+	<h:commandLink action="menu" value=" ...REGRESAR AL MENU..." />
+		<p:panelGrid columns="2">
+		<h:outputText value="Codigo Consulta"></h:outputText>
+			<p:inputText maxlength="20" value="#{controllerMedico.codConsulta}" >	
+			</p:inputText>
+							
+			<h:outputText value="Estado: " />
+			<h:selectOneMenu value="#{controllerMedico.estado}">
+				<f:selectItem noSelectionOption="true" itemLabel="Seleccione......."/>
+				<f:selectItem itemValue="A" itemLabel="ATENDIDO"/>
+				<f:selectItem itemValue="PA" itemLabel="POR ATENDER"/>
+			</h:selectOneMenu>
+			
+			<h:outputText value="Ingresar Nota Medica"></h:outputText>
+			<p:inputText maxlength="20" value="#{controllerMedico.notaMedica}" >	
+			</p:inputText>
+			<h:outputText value="Ingresar Diagnostico"></h:outputText>
+			<p:inputText maxlength="20" value="#{controllerMedico.diagnostico}" >	
+			</p:inputText>
+			<h:outputText value="Ingresar Dias de Resposo"></h:outputText>
+			<p:inputText maxlength="20" value="#{controllerMedico.diasrepos}" >	
+			</p:inputText>
+			<p:outputLabel for="button" value="Solicitud Consulta" />
+        <p:calendar id="button" value="#{controllerMedico.fechaSolicutudConsula}" showOn="button" />
+		<p:outputLabel for="button1" value="Realizar Consulta" />
+        <p:calendar id="button1" value="#{controllerMedico.fechaRealizaConsulata}" showOn="button" />
+			
+			<p:commandButton value="Agregar" icon="ui-icon-disk"
+						update="@form,:form2:tabla1"
+						actionListener="#{controllerMedico.actionInsertarConsultaMedica()}" 
+						></p:commandButton>
+			<p:messages autoUpdate="true"></p:messages>
+			
+		</p:panelGrid>
+		</h:form>
+			<h:form id="form2">
+			<p:panel header="LISTA DE REGISTROS DE CONSULTA MEDICA">
+				<p:dataTable value="#{controllerMedico.lista}" var="p"
+					id="tabla1">
+					<p:column headerText="CODIGO">
+						<h:outputText value="#{p.codConsulta}" />
+					</p:column>
+					
+
+					<p:column headerText="ESTADO">
+						<h:outputText value="#{p.estado}" />
+					</p:column>
+					<p:column headerText="NOTA MEDICA">
+						<h:outputText value="#{p.notaMedica}" />
+					</p:column>
+					<p:column headerText="DIAGNOSTICO">
+						<h:outputText value="#{p.diagnostico}" />
+					</p:column>
+					<p:column headerText="DIAS REPOSO">
+						<h:outputText value="#{p.diasrepos}" />
+					</p:column>
+					<p:column headerText="SOLICITUD CONSULTA">
+						<h:outputText value="#{p.fechaSolicutudConsula}" />
+					</p:column>
+					<p:column headerText="REALIZAR CONSULTA">
+						<h:outputText value="#{p.fechaRealizaConsulata}" />
+					</p:column>
+					<p:column headerText="ACTUALIZAR">
+						<p:commandButton icon="ui-icon-comment"
+				action="#{controllerMedico.actionCargarCitaMedica(p)}"
+				update=":form2"></p:commandButton>
+					</p:column>
+					<p:column headerText="ELIMINAR">
+						<p:commandButton icon="ui-icon-cancel"
+				action="#{controllerMedico.actionEliminarCitaMedica(p)}"
+				update=":form2"></p:commandButton>
+					</p:column>
+				</p:dataTable>
+
+			</p:panel>
+		</h:form>
+	</p:panel>	
+</body> 
+</html>
+

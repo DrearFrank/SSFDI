@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Registro Deportista</title>
+</h:head>
+<body style="font-size: 70%">
+	<h:form id="form1">
+		<h:commandLink action="menu" value=" ...REGRESAR AL MENU..." />
+	</h:form>
+	<p:panel header="Ingreso de nuevo Registro">
+		<h:form>
+			<p:panelGrid columns="2" id="panelGrid1">
+				<h:outputText value="Cedula:" />
+				<p:inputText value="#{beanUsuario.codigoUsuario}" required="true"
+					requiredMessage="Debe ingresar la cedula." />
+				<h:outputText value="NOMBRE :" />
+				<p:inputText value="#{beanUsuario.nombresusuario}"></p:inputText>
+				<h:outputText value="APELLIDO:" />
+				<p:inputText value="#{beanUsuario.apellidousuario}"></p:inputText>
+				<h:outputText value="Sexo:" />
+				<h:selectOneMenu value="#{beanUsuario.usexo}">
+					<f:selectItem noSelectionOption="true" itemLabel="Seleccione..." />
+					<f:selectItem itemValue="Masculino" itemLabel="Masculino" />
+					<f:selectItem itemValue="Femenino" itemLabel="Femenino" />
+				</h:selectOneMenu>
+				<h:outputText value="Lugar de Nacimiento:" />
+				<p:inputText value="#{beanUsuario.ulugaNac}"></p:inputText>
+				<h:outputText value="Correo Electronico:" />
+				<p:inputText value="#{beanUsuario.ucorreo}" required="true"
+					requiredMessage="Debe ingresar la correo." />
+				<h:outputText value="DIRECCION:" />
+				<p:inputText value="#{beanUsuario.udireccion}"></p:inputText>
+				<h:outputText value="ROL DE USUARIO:" />
+				<h:selectOneMenu value="#{beanUsuario.tipousuario}">
+					<f:selectItem noSelectionOption="true" itemLabel="Seleccione..." />
+					<f:selectItem itemValue="En" itemLabel="Entrenador" />
+					<f:selectItem itemValue="AD" itemLabel="Administrador" />
+					<f:selectItem itemValue="FI" itemLabel="Financiero" />
+					<f:selectItem itemValue="ME" itemLabel="Medico" />
+				</h:selectOneMenu>
+
+				<h:outputText value="Contraseña:" />
+				<p:inputText value="#{beanUsuario.clave}"></p:inputText>
+
+
+				<p:messages></p:messages>
+			</p:panelGrid>
+
+
+
+
+
+			<p:commandButton value="Insertar usuario"
+				action="#{beanUsuario.actionInsertarUsuario()}"
+				update=":form2,panelGrid1"></p:commandButton>
+
+
+
+
+		</h:form>
+	</p:panel>
+	<h:form id="form2">
+		<p:messages></p:messages>
+		<p:dataTable border="1" value="#{beanUsuario.listaus}" var="p"
+			paginator="true" rows="6" id="tabla1">
+			<p:column headerText="CEDULA">
+				<h:outputText value="#{p.codigoUsuario}"></h:outputText>
+			</p:column>
+			<p:column headerText="NOMBRE">
+				<h:outputText value="#{p.nombresUsuario}"></h:outputText>
+			</p:column>
+			<p:column headerText="APELLIDO">
+				<h:outputText value="#{p.apellidoUsuario}"></h:outputText>
+			</p:column>
+			<p:column headerText="DIRECCION">
+				<h:outputText value="#{p.udireccion}"></h:outputText>
+			</p:column>
+			<p:column headerText="ROL">
+				<h:outputText value="#{p.tipoUsuario}"></h:outputText>
+			</p:column>
+			<p:column headerText="CORREO">
+				<h:outputText value="#{p.ucorreo}"></h:outputText>
+			</p:column>
+			
+
+			<p:column headerText="ELIMINAR">
+				<p:commandButton icon="ui-icon-cancel"
+					action="#{beanUsuario.actionEliminarUsuario(p)}"
+					update=":form2"></p:commandButton>
+			</p:column>
+			<p:column headerText="ACTUALIZAR">
+				<p:commandButton icon="ui-icon-comment"
+					action="#{beanUsuario.actionCargarUsuario(p)}"
+					update=":form2"></p:commandButton>
+			</p:column>
+		</p:dataTable>
+	</h:form>
+</body>
+</html>
