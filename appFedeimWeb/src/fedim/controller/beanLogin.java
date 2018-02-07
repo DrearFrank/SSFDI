@@ -44,7 +44,7 @@ public class beanLogin {
 			}
 			if(tipoUsuario.equals("ME")){
 				acceso=true;
-				return "medico/menu";
+				return "medico/index";
 			}
 			if(tipoUsuario.equals("FI")){
 				acceso=true;
