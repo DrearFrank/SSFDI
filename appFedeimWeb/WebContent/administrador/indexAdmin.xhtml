@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:ui="http://java.sun.com/jsf/facelets"
+xmlns:f="http://java.sun.com/jsf/core"
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Menu de Administrador</title>
+</h:head>
+<body>
+
+<p:panel header="FUNCIONES DEL ENTRENADOR">
+<p:messages autoUpdate="true"></p:messages>
+<h:form id="form1">
+<p:growl autoUpdate="true"/>
+ 
+    <p:panelMenu style="width:300px">
+    
+         <p:submenu label="REGISTRO ESPACIOS" >
+        <p:menuitem value="Registrar Espacio Deportivo" action="registrolugar"/>
+         </p:submenu>
+        
+        <p:submenu label="REGISTRO JUGADOR" >
+        <p:menuitem value="Registrar Jugador" action="registrojugador"/>
+       </p:submenu>
+        <p:submenu label=" REGISTRO USUARIOS" >
+        <p:menuitem value="registro usuarios"  action="registrousuario"/>
+        </p:submenu>
+       
+      
+   
+    </p:panelMenu>		
+	</h:form>
+</p:panel>
+</body>
+</html>

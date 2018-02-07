@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
-	<persistence-unit name="fedimDS" transaction-type="JTA">
-		<jta-data-source>java:/fedimDS</jta-data-source>
+	<persistence-unit name="fedimmDS" transaction-type="JTA">
+		<jta-data-source>java:/fedimmDS</jta-data-source>
 		<class>fedim.model.entities.Categoria</class>
 		<class>fedim.model.entities.ConsultaMedica</class>
 		<class>fedim.model.entities.Deportista</class>
