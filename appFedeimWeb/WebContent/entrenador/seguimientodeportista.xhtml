@@ -43,6 +43,9 @@
 				<h:commandButton value="Guardar Registro"
 					action="#{beanSeguimiento.guardarSeguimiento()}" />
 				<p:messages id="mensajes" />
+					<h:commandButton value="Imprimir" rendered="#{beanSeguimiento.seguiCabTmpGuardada}" type="button" icon="ui-icon-print">
+					<p:printer target=":panel1" />
+				</h:commandButton>
 			
 			</p:panelGrid>
 		</p:panel>

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Busqueda</title>
+</h:head>
+<body style="font-size: 70%">
+	<h:form>
+		<p:menubar>
+		
+			<p:menuitem value="Nuevo Seguimiento Deportista" action="seguimientodeportista"></p:menuitem>
+		
+			<f:facet name="options">
+				<p:commandButton value="Salir" action="#{beanLogin.salirSistema()}" icon="ui-icon-extlink"/>
+			</f:facet>
+		</p:menubar>
+	</h:form>
+	<br />
+	<h:form id="form1">
+		<p:panelGrid columns="3">
+			<f:facet name="header">
+				<h:outputText value="BUSQUEDA" />
+			</f:facet>
+			<h:outputText value="Fecha inicio" />
+			<h:outputText value="Fecha fin" />
+			<h:outputText value="" />
+			<p:calendar value="#{beanSeguimiento.fechaInicio}" />
+			<p:calendar value="#{beanSeguimiento.fechaFinal}" />
+			<p:commandButton icon="ui-icon-search" value="Buscar"
+				update=":form2:panel1" action="#{beanSeguimiento.actionBuscar()}" />
+		</p:panelGrid>
+	</h:form>
+	<br />
+	<p:messages id="mensajes"></p:messages>
+	<h:form id="form2">
+		<p:panel header="Resultado de la búsqueda:" id="panel1">
+			<p:dataTable value="#{beanSeguimiento.listaSegimientoCab}" var="pc">
+				<p:column headerText="Id Seguimiento">
+					<h:outputText value="#{pc.numeroSegui}" />
+				</p:column>
+				<p:column headerText="Fecha Seguimiento">
+					<h:outputText value="#{pc.fechaEmision}" />
+				</p:column>
+				<p:column headerText="Cedula Deportista">
+					<h:outputText value="#{pc.deportista.cedulaDeportista}">
+						<f:convertNumber maxFractionDigits="2" minFractionDigits="2" />
+					</h:outputText>
+				</p:column>
+				
+				<p:column headerText="VER">
+					<p:commandButton action="#{ beanSeguimiento.actionCargarSeguimiento(pc)}"
+						icon="ui-icon-search" update=":form2:dlg1"
+						oncomplete="PF('dialogo1').show()" />
+				</p:column>
+				
+			</p:dataTable>
+		</p:panel>
+		<p:dialog header="INFORMACION" widgetVar="dialogo1" modal="true"
+			id="dlg1">
+			<p:panel id="detalleSeguimiento" header="Información del seguimiento"
+				style="width:500px">
+				<h:panelGrid columns="2">
+					<h:outputText value="Numero seguimiento:" />
+					<h:outputText value="#{beanSeguimiento.seguiCabTmp.numeroSegui}" />
+					<h:outputText value="Fecha Seguimiento:" />
+					<h:outputText value="#{beanSeguimiento.seguiCabTmp.fechaEmision}" />
+					<h:outputText value="Deportista:" />
+					<h:outputText
+						value="#{beanSeguimiento.seguiCabTmp.deportista.nombres}" />
+					<h:outputText value="Subtotal:" />
+					<h:outputText value="#{beanSeguimiento.seguiCabTmp.totalporcentaje}">
+						<f:convertNumber maxFractionDigits="2" minFractionDigits="2" />
+					</h:outputText>
+				</h:panelGrid>
+				<p:dataTable value="#{beanSeguimiento.seguiCabTmp.testDets}" var="d">
+					<p:column headerText="Test">
+						<h:outputText value="#{d.cantidad}" />
+					</p:column>
+			
+				
+				</p:dataTable>
+			</p:panel>
+		</p:dialog>
+		 
+	</h:form>
+</body>
+</html>
