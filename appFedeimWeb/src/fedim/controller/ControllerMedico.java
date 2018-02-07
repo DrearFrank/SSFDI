@@ -97,7 +97,7 @@ public String acitionActulizarMedico() {
 	p.setNotaMedica(notaMedica);
 	try {
 		managerMedico.actualizarConsultaMedica(p);
-		//limpiamos las variables del formulario
+		//limpiamos las variables del formulario Cita Medica
 		codConsulta="";
 		diagnostico="";
 		diasrepos="";
