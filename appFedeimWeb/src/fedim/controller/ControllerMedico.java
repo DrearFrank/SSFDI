@@ -113,7 +113,7 @@ public String acitionActulizarMedico() {
 }
 
 
-//modificar a que inserte en la base de datos
+//modificar a que inserte en la base de datos CitaMedica
 public List<ConsultaMedica> getListadoMe() {
 	listadoMe=managerMedico.findAllMedico();
 	return listadoMe;
